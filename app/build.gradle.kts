@@ -8,6 +8,10 @@ android {
         version = release(37)
     }
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.example.sivmeimei_homework"
         minSdk = 29

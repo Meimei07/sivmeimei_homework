@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">SivMeimei_Homework</string>
+    <string name="logo">logo</string>
+    <string name="title">App Content</string>
+    <string name="subtitle">Welcome Back!</string>
+    <string name="username_input">Email or Username</string>
+    <string name="password_input">Password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password"><u>Forgot Password?</u></string>
 </resources>
