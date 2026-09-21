@@ -7,4 +7,6 @@
     <string name="password_input">Password</string>
     <string name="login">Login</string>
     <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string name="or_login_with">Or login with</string>
+    <string name="sign_up">Don\'t have an account? Sign Up</string>
 </resources>
