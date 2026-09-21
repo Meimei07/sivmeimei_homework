@@ -19,17 +19,17 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.sivmeimei_homework.databinding.ActivityMainBinding;
+import com.example.sivmeimei_homework.databinding.ActivityRegisterBinding;
 
-public class MainActivity extends AppCompatActivity {
-    ActivityMainBinding binding;
+public class RegisterActivity extends AppCompatActivity {
+    ActivityRegisterBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -42,59 +42,65 @@ public class MainActivity extends AppCompatActivity {
             hideKeyboard();
         });
 
-        // Handle login btn click event
-        binding.btnLogin.setOnClickListener(view -> {
+        // Handle register btn click event
+        binding.btnRegister.setOnClickListener(view -> {
             hideKeyboard();
             var message = "";
 
-            message += "Username: " + binding.etUsername.getText().toString();
-            message += "\nPassword: " + binding.etPassword.getText().toString();
+            message += "Email: " + binding.etEmail.getText().toString();
+            message += ", Username: " + binding.etUsername.getText().toString();
+            message += ", Password: " + binding.etPassword.getText().toString();
 
-            Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
         });
-
-        // Handle forgot password btn click event
-        binding.btnForgotPassword.setOnClickListener(view ->
-            Toast.makeText(MainActivity.this, "You forgot password!", Toast.LENGTH_SHORT).show()
-        );
 
         // Handle google btn click event
         binding.btnGoogle.setOnClickListener(view -> {
-            Toast.makeText(MainActivity.this, "Login with Google", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this, "Register with Google", Toast.LENGTH_SHORT).show();
         });
 
         // Handle facebook btn click event
         binding.btnFacebook.setOnClickListener(view -> {
-            Toast.makeText(MainActivity.this, "Login with Facebook", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this, "Register with Facebook", Toast.LENGTH_SHORT).show();
         });
 
         // Handle GitHub btn click event
         binding.btnGithub.setOnClickListener(view -> {
-            Toast.makeText(MainActivity.this, "Login with Github", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this, "Register with Github", Toast.LENGTH_SHORT).show();
         });
 
-        Button btn = binding.btnSignUp;
-        String text = getString(R.string.no_account);
+        Button btn = binding.btnLogin;
+        String text = getString(R.string.already_have_account);
 
         SpannableString spannableString = new SpannableString(text);
-        int primaryColor = ContextCompat.getColor(MainActivity.this, R.color.primary);
-        spannableString.setSpan(new ForegroundColorSpan(primaryColor), 23, 30, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        int primaryColor = ContextCompat.getColor(RegisterActivity.this, R.color.primary);
+        spannableString.setSpan(new ForegroundColorSpan(primaryColor), 25, 30, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         btn.setText(spannableString);
 
-        // Handle sign up btn click event
+        // Handle login btn click event
         btn.setOnClickListener(view -> {
-            Toast.makeText(MainActivity.this, "You sign up", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this, "You login", Toast.LENGTH_SHORT).show();
         });
 
         addTextInputListener();
     }
 
-    private void validateLoginBtn() {
-        if(binding.etUsername.getText().toString().isEmpty() || binding.etPassword.getText().toString().isEmpty()) {
-            binding.btnLogin.setEnabled(false);
+    private void validateRegisterBtn() {
+        if(binding.etEmail.getText().toString().isEmpty() ||
+            binding.etUsername.getText().toString().isEmpty() ||
+            binding.etPassword.getText().toString().isEmpty() ||
+            binding.etConfirmPassword.getText().toString().isEmpty()) {
+            binding.btnRegister.setEnabled(false);
         } else {
-            binding.btnLogin.setEnabled(true);
+            binding.btnRegister.setEnabled(true);
+        }
+
+        // Validate password and confirm password, must match
+        if (binding.etPassword.getText().toString().equals(binding.etConfirmPassword.getText().toString())) {
+            binding.etConfirmPasswordLayout.setError(null);
+        } else {
+            binding.etConfirmPasswordLayout.setError("Password does not match.");
         }
     }
 
@@ -112,12 +118,14 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                validateLoginBtn();
+                validateRegisterBtn();
             }
         };
 
+        binding.etEmail.addTextChangedListener(textWatcher);
         binding.etUsername.addTextChangedListener(textWatcher);
         binding.etPassword.addTextChangedListener(textWatcher);
+        binding.etConfirmPassword.addTextChangedListener(textWatcher);
     }
 
     private void hideKeyboard() {
