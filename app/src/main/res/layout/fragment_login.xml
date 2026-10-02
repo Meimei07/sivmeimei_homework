@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   xmlns:app="http://schemas.android.com/apk/res-auto"
    xmlns:tools="http://schemas.android.com/tools"
-   android:id="@+id/main"
    android:layout_width="match_parent"
    android:layout_height="match_parent"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   android:id="@+id/main"
    android:background="@color/background"
-   tools:context=".RegisterActivity">
+   tools:context=".LoginFragment">
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,7 +16,7 @@
             android:id="@+id/rootLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginVertical="25dp"
+            android:layout_marginTop="25dp"
         >
             <!-- Logo -->
             <ImageView
@@ -27,7 +28,7 @@
                 android:background="@drawable/logo_round"
                 android:clipToOutline="true"
 
-                app:layout_constraintTop_toTopOf="@id/main"
+                app:layout_constraintTop_toTopOf="@id/rootLayout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
             />
@@ -52,7 +53,7 @@
                 android:id="@+id/subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/register_subtitle"
+                android:text="@string/login_subtitle"
                 android:textSize="30sp"
                 android:layout_marginVertical="20dp"
                 android:textColor="@color/white"
@@ -62,41 +63,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
             />
 
-            <!-- Email -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/etEmailLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/email_input"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="20dp"
-                app:startIconDrawable="@drawable/mail"
-                app:startIconTint="@color/primary"
-                android:textColorHint="@color/white"
-
-                app:layout_constraintTop_toBottomOf="@id/subtitle"
-            >
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                />
-            </com.google.android.material.textfield.TextInputLayout>
-
             <!-- Username -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/etUsernameLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/username_input"
+                android:hint="@string/email_or_username_input"
                 android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 app:startIconDrawable="@drawable/username_24"
                 app:startIconTint="@color/primary"
                 android:textColorHint="@color/white"
 
-                app:layout_constraintTop_toBottomOf="@id/etEmailLayout"
+                app:layout_constraintTop_toBottomOf="@id/subtitle"
             >
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etUsername"
@@ -130,37 +109,12 @@
                 />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Confirm password -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/etConfirmPasswordLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/confirm_password_input"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="10dp"
-                app:startIconDrawable="@drawable/vpn_key"
-                app:endIconMode="password_toggle"
-                app:startIconTint="@color/primary"
-                android:textColorHint="@color/white"
-                app:errorEnabled="true"
-
-                app:layout_constraintTop_toBottomOf="@id/etPasswordLayout"
-            >
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etConfirmPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:textColor="@color/white"
-                />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Register btn -->
+            <!-- Login btn -->
             <Button
-                android:id="@+id/btnRegister"
+                android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/register"
+                android:text="@string/login"
                 android:textSize="16sp"
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="10dp"
@@ -168,19 +122,35 @@
                 app:backgroundTint="@null"
                 android:enabled="false"
 
-                app:layout_constraintTop_toBottomOf="@id/etConfirmPasswordLayout"
+                app:layout_constraintTop_toBottomOf="@id/etPasswordLayout"
             />
 
-            <!-- Or register with -->
+            <!-- Forgot password btn -->
+            <Button
+                android:id="@+id/btnForgotPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/forgot_password"
+                android:textSize="16sp"
+                android:layout_marginTop="-10dp"
+                android:textColor="@color/primary"
+                android:background="@android:color/transparent"
+
+                app:layout_constraintTop_toBottomOf="@id/btnLogin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+            />
+
+            <!-- Or login with -->
             <LinearLayout
-                android:id="@+id/orRegisterWithContainer"
+                android:id="@+id/orLoginWithContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginHorizontal="15dp"
-                android:layout_marginVertical="20dp"
+                android:layout_marginVertical="10dp"
 
-                app:layout_constraintTop_toBottomOf="@id/btnRegister"
+                app:layout_constraintTop_toBottomOf="@id/btnForgotPassword"
             >
                 <View
                     android:layout_width="0dp"
@@ -193,10 +163,14 @@
                     android:id="@+id/tvOrLoginWith"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/or_register_with"
+                    android:text="@string/or_login_with"
                     android:textSize="16sp"
                     android:paddingHorizontal="15dp"
                     android:textColor="@color/white"
+
+                    app:layout_constraintTop_toBottomOf="@id/btnForgotPassword"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                 />
 
                 <View
@@ -207,14 +181,14 @@
                 />
             </LinearLayout>
 
-            <!-- Other register options -->
+            <!-- Other login options -->
             <LinearLayout
                 android:id="@+id/otherOptionsContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="15dp"
 
-                app:layout_constraintTop_toBottomOf="@id/orRegisterWithContainer"
+                app:layout_constraintTop_toBottomOf="@id/orLoginWithContainer"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
             >
@@ -224,6 +198,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/google"
+                    android:contentDescription="google logo"
                     android:background="@drawable/rounded_border"
                     app:backgroundTint="@null"
                     android:padding="10dp"
@@ -236,6 +211,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/facebook"
+                    android:contentDescription="facebook logo"
                     android:background="@drawable/rounded_border"
                     app:backgroundTint="@null"
                     android:padding="10dp"
@@ -248,6 +224,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/github_white"
+                    android:contentDescription="githhub logo"
                     android:background="@drawable/rounded_border"
                     app:backgroundTint="@null"
                     android:padding="10dp"
@@ -255,13 +232,15 @@
                 />
             </LinearLayout>
 
-            <!-- Login -->
+            <!-- Sign up -->
             <Button
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/no_account"
                 android:textSize="16sp"
-                android:layout_marginVertical="5dp"
+                android:layout_marginVertical="20dp"
+                android:textColor="@color/white"
                 android:background="@android:color/transparent"
 
                 app:layout_constraintTop_toBottomOf="@id/otherOptionsContainer"
@@ -270,4 +249,5 @@
             />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
