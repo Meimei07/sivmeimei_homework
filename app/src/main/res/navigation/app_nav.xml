@@ -3,7 +3,7 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/app_nav"
-            app:startDestination="@id/registerFragment">
+            app:startDestination="@id/movieFragment">
 
     <fragment
         android:id="@+id/registerFragment"
@@ -19,4 +19,9 @@
         android:name="com.example.sivmeimei_homework.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="com.example.sivmeimei_homework.MovieFragment"
+        android:label="fragment_movie"
+        tools:layout="@layout/fragment_movie" />
 </navigation>

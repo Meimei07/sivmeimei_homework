@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content"
+   android:padding="10dp"
+   android:background="@color/background"
+   xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Movie image -->
+    <ImageView
+        android:id="@+id/imgMovie"
+        android:layout_width="130dp"
+        android:layout_height="180dp"
+        android:src="@drawable/movie_1"
+        android:contentDescription="movie image"
+        android:scaleType="centerCrop"
+        android:background="@drawable/movie_img_rounded_corner"
+        android:clipToOutline="true"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+    />
+
+    <!-- Rating -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rating_blur_bg"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+
+        app:layout_constraintTop_toTopOf="@id/imgMovie"
+        app:layout_constraintStart_toStartOf="@id/imgMovie"
+    >
+        <!-- Star icon -->
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/star"
+            android:contentDescription="star icon"
+            app:tint="#FF9800"
+        />
+
+        <!-- Rate -->
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.5"
+            android:textSize="12sp"
+            android:layout_marginStart="3dp"
+            android:textColor="#FF9800"
+            android:textStyle="bold"
+        />
+    </LinearLayout>
+
+    <!-- Access badge -->
+    <TextView
+        android:id="@+id/tvAccessBadge"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="Free"
+        android:textSize="13sp"
+        android:background="@drawable/free_access_badge"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:layout_marginVertical="15dp"
+        android:layout_marginStart="15dp"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imgMovie"
+    />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Frozen"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_marginStart="15dp"
+        android:paddingVertical="10dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+
+        app:layout_constraintTop_toBottomOf="@id/tvAccessBadge"
+        app:layout_constraintStart_toEndOf="@id/imgMovie"
+        app:layout_constraintEnd_toEndOf="parent"
+    />
+
+    <!-- Year icon -->
+    <ImageView
+        android:id="@+id/imgYear"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:src="@drawable/calendar"
+        android:contentDescription="year icon"
+        android:layout_marginStart="15dp"
+        app:tint="@android:color/darker_gray"
+        android:layout_marginTop="5dp"
+
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toEndOf="@id/imgMovie"
+    />
+
+    <!-- Year -->
+    <TextView
+        android:id="@+id/tvYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2025"
+        android:textSize="13dp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginStart="5dp"
+
+        app:layout_constraintTop_toTopOf="@id/imgYear"
+        app:layout_constraintStart_toEndOf="@id/imgYear"
+    />
+
+    <!-- Duration icon -->
+    <ImageView
+        android:id="@+id/imgDuration"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:src="@drawable/clock"
+        android:contentDescription="duration icon"
+        app:tint="@android:color/darker_gray"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+
+        app:layout_constraintTop_toBottomOf="@id/imgYear"
+        app:layout_constraintStart_toEndOf="@id/imgMovie"
+    />
+
+    <!-- Duration -->
+    <TextView
+        android:id="@+id/tvDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="148 minutes"
+        android:textSize="13dp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginStart="5dp"
+
+        app:layout_constraintTop_toTopOf="@id/imgDuration"
+        app:layout_constraintStart_toEndOf="@id/imgDuration"
+    />
+
+    <!-- Age rating badge -->
+    <TextView
+        android:id="@+id/tvAgeRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="R-18"
+        android:textSize="12sp"
+        android:textColor="@android:color/holo_blue_bright"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/age_rating_badge"
+
+        app:layout_constraintTop_toTopOf="@id/imgDuration"
+        app:layout_constraintStart_toEndOf="@id/tvDuration"
+    />
+
+    <!-- Genre icon -->
+    <ImageView
+        android:id="@+id/imgGenre"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:src="@drawable/movie"
+        android:contentDescription="genre icon"
+        app:tint="@android:color/darker_gray"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+
+        app:layout_constraintTop_toBottomOf="@id/imgDuration"
+        app:layout_constraintStart_toEndOf="@id/imgMovie"
+    />
+
+    <!-- Genre -->
+    <TextView
+        android:id="@+id/tvGenre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fantasy"
+        android:textSize="13dp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginStart="5dp"
+
+        app:layout_constraintTop_toTopOf="@id/imgGenre"
+        app:layout_constraintStart_toEndOf="@id/imgGenre"
+    />
+
+    <TextView
+        android:id="@+id/separator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="|"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginStart="7dp"
+
+        app:layout_constraintTop_toTopOf="@id/imgGenre"
+        app:layout_constraintStart_toEndOf="@id/tvGenre"
+    />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Movie"
+        android:textColor="@color/white"
+        android:layout_marginStart="7dp"
+        android:textSize="13dp"
+
+        app:layout_constraintTop_toTopOf="@id/imgGenre"
+        app:layout_constraintStart_toEndOf="@id/separator"
+    />
+</androidx.constraintlayout.widget.ConstraintLayout>
